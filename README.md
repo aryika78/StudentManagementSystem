@@ -38,58 +38,78 @@ src/
 ├── service/impl/       # Implementation of the service
 ├── resources/
 │   ├── templates/      # Thymeleaf views (HTML)
-│   ├── static/         # CSS/JS (if any)
+│   ├── static/         # CSS/JS
 │   └── application.properties
-⚙️ Configuration
-application.properties
+```
+---
 
-# MySQL Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/sms?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
-spring.datasource.username=root
-spring.datasource.password=
+## ⚙️ Prerequisites
 
-# JPA / Hibernate
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-spring.jpa.hibernate.ddl-auto=update
+Make sure the following are installed on your system:
 
-# Show SQL logs in console
-logging.level.org.hibernate.SQL=DEBUG
-✅ Make sure you have a database named sms in your MySQL:
+- ✅ Java 17 or later  
+- ✅ Maven  
+- ✅ MySQL  
+- ✅ IDE (IntelliJ IDEA recommended)
 
-CREATE DATABASE sms;
-🚀 Running the Application
-Prerequisites
-Java 17 or above
+---
 
-MySQL Server installed and running
+## 🛠️ Database Setup
 
-Maven installed
+1. **Open MySQL** and run this command to create the database:
 
-Steps to Run
-Clone the repository
+    ```sql
+    CREATE DATABASE sms;
+    ```
 
-git clone https://github.com/aryika78/StudentManagementSystem.git
-cd StudentManagementSystem
-Start MySQL and ensure the sms database is created.
+2. ✅ That’s it! No need to create tables manually — Hibernate will handle it.
 
-Run the application
+---
 
-mvn spring-boot:run
-Open in browser
-👉 http://localhost:8080/students
+## 🔧 Configuration – `application.properties`
 
-🔗 Endpoints Summary
-Method	Endpoint	Description
-GET	/students	View all students
-GET	/students/new	Show add form
-POST	/students	Add new student
-GET	/students/edit/{id}	Show edit form
-POST	/students/{id}	Update student
-GET	/students/delete/{id}	Delete a student
+### 🐬 **MySQL Configuration**
 
-🧑‍💻 Author
-Aryika Patni
+spring.datasource.url=jdbc:mysql://localhost:3306/sms?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false<br/>
+spring.datasource.username=root<br/>
+spring.datasource.password=<br/>
 
-📜 License
+### 🛠️ Hibernate Configuration
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect<br/>
+spring.jpa.hibernate.ddl-auto=update<br/>
+
+### 🧾 Show SQL in Console
+
+logging.level.org.hibernate.SQL=DEBUG<br/>
+
+---
+
+## 🚀 How to Run
+
+| Step | Action |
+|------|--------|
+| 1️⃣  | **Clone the repository:**<br>`git clone https://github.com/aryika78/StudentManagementSystem.git` |
+| 2️⃣  | **Navigate into the project folder:**<br>`cd StudentManagementSystem` |
+| 3️⃣  | **Run the app using Maven:**<br>`mvn spring-boot:run` |
+| 4️⃣  | **OR open the project in IntelliJ and run**<br>`StudentManagementSystemApplication.java` |
+| 5️⃣  | **Open your browser and go to:**<br>[http://localhost:8080/students](http://localhost:8080/students) |
+
+
+## 🌐 Endpoints Summary
+
+| **HTTP Method** | **Endpoint URL**          | **Description**                     |
+|-----------------|---------------------------|-------------------------------------|
+| GET             | `/students`               | List all students                   |
+| GET             | `/students/new`           | Show form to add a student          |
+| POST            | `/students`               | Save a new student                  |
+| GET             | `/students/edit/{id}`     | Show form to edit student           |
+| POST            | `/students/{id}`          | Update student by ID                |
+| GET             | `/students/delete/{id}`   | Delete student by ID                |
+
+
+## 👩‍💻 Author
+- Aryika Patni
+
+## 📄 License
 This project is licensed under the MIT License.
-Feel free to use, modify, and distribute it for learning or development purposes.
+You can freely use, modify, and distribute it.
